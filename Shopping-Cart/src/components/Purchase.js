@@ -5,6 +5,43 @@ import { removeItem,addQuantity,subtractQuantity} from './actions/purchaseAction
 import Recipe from './Recipe'
 class Purchase extends Component{
 
+    constructor() {
+        super();
+        this.state = {
+            purchases: [],
+        };
+    }
+
+    componentDidMount() {
+        var url = "http://localhost:9000/purchases"
+
+        fetch(url, {
+            mode: 'cors',
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'http://localhost:3000',
+            },
+            method: 'GET',
+        })
+            .then(results => {
+                return results.json();
+            }).then(data => {
+            let purchases = data.map((purchase) => {
+                return (
+                    <div key={purchase.id}>
+                        <div className="purchase">{purchase.name}</div>
+                        <div>{purchase.user_id}</div>
+                        <div>{purchase.product_id}</div>
+                        <div>{purchase.date}</div>
+                        <div>{purchase.amount}</div>
+                    </div>
+                )
+            })
+            this.setState({purchases: purchases})
+        })
+    }
+
     //to remove the item completely
     handleRemove = (id)=>{
         this.props.removeItem(id);
@@ -18,7 +55,7 @@ class Purchase extends Component{
         this.props.subtractQuantity(id);
     }
     render(){
-              
+
         let addedItems = this.props.items.length ?
             (  
                 this.props.items.map(item=>{
@@ -37,8 +74,8 @@ class Purchase extends Component{
                                             <b>Quantity: {item.quantity}</b> 
                                         </p>
                                         <div className="add-remove">
-                                            <Link to="/purchase"><i className="material-icons" onClick={()=>{this.handleAddQuantity(item.id)}}>arrow_drop_up</i></Link>
-                                            <Link to="/purchase"><i className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id)}}>arrow_drop_down</i></Link>
+                                            <Link to="/purchases"><i className="material-icons" onClick={()=>{this.handleAddQuantity(item.id)}}>arrow_drop_up</i></Link>
+                                            <Link to="/purchases"><i className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id)}}>arrow_drop_down</i></Link>
                                         </div>
                                         <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(item.id)}}>Remove</button>
                                     </div>
@@ -54,9 +91,10 @@ class Purchase extends Component{
              )
        return(
             <div className="container">
-                <div className="purchase">
+                <div className="purchases">
                     <h5>You have ordered:</h5>
                     <ul className="collection">
+                        {/*{this.state.purchases}*/}
                         {addedItems}
                     </ul>
                 </div> 

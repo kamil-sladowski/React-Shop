@@ -9,8 +9,9 @@ import { Link } from 'react-router-dom'
                     <ul className="right">
                         <li><Link to="/">Shop</Link></li>
                         <li><Link to="/products">Products</Link></li>
-                        <li><Link to="/purchase">My cart</Link></li>
-                        <li><Link to="/purchase"><i className="material-icons">shopping_cart</i></Link></li>
+                        <li><Link to="/purchases">My cart</Link></li>
+                        <li><Link to="/purchases"><i className="material-icons">shopping_cart</i></Link></li>
+                        <li><Link to="/login">Login</Link></li>
                     </ul>
                 </div>
             </nav>

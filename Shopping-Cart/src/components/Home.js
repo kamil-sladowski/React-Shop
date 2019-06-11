@@ -12,7 +12,27 @@ import {Link} from "react-router-dom";
             <div className="container">
                 <h3 className="center">Welcome</h3>
                 <div className="center">
-                    <Link to="/products"><i className="material-icons">input</i></Link>
+                    <div>
+                        <Link to="/products"><i className="material-icons">input</i> Show Products </Link>
+                    </div>
+                    <div>
+                        <Link to="/product"><i className="material-icons">library_add</i> Add products </Link>
+                    </div>
+                    <div>
+                        <Link to="/categories"><i className="material-icons">category</i> Show Categories </Link>
+                    </div>
+                    <div>
+                        <Link to="/category"><i className="material-icons">category</i> Add Categories </Link>
+                    </div>
+
+                    <div>
+                        <Link to="/sales"><i className="material-icons">money_off</i> Show Sales </Link>
+                    </div>
+
+                    <div>
+                        <Link to="/sale"><i className="material-icons">money_off</i> Add sale </Link>
+                    </div>
+
                 </div>
             </div>
         )

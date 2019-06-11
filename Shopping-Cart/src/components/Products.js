@@ -6,6 +6,43 @@ import { addToCart } from './actions/purchaseActions'
 
 class Products extends Component{
 
+    constructor() {
+        super();
+        this.state = {
+            products: [],
+        };
+    }
+
+    componentDidMount() {
+        var url = "http://localhost:9000/products"
+
+        fetch(url, {
+            mode: 'cors',
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'http://localhost:3000',
+            },
+            method: 'GET',
+        })
+            .then(results => {
+                return results.json();
+            }).then(data => {
+            let products = data.map((prod) => {
+                return (
+                    <div key={prod.id}>
+                        <div className="product">{prod.name}</div>
+                        <div>{prod.price}</div>
+                        <div>{prod.amount}</div>
+                        <div>{prod.description}</div>
+                        <div>{prod.category}</div>
+                    </div>
+                )
+            })
+            this.setState({products: products})
+        })
+    }
+
     handleClick = (id)=>{
         this.props.addToCart(id);
     }
@@ -33,6 +70,7 @@ class Products extends Component{
             <div className="container">
                 <h3 className="center">Our items</h3>
                 <div className="box">
+                    {/*{this.state.products}*/}
                     {itemList}
                 </div>
             </div>
