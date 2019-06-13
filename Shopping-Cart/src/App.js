@@ -9,6 +9,8 @@ import Sales from './components/Sales'
 import ProductForm from "./components/ProductForm";
 import CategoryForm from "./components/CategoryForm";
 import SaleForm from "./components/SaleForm";
+import LoginHome from "./components/LoginHome";
+// import LoginMaterialize from "./components/LoginMaterialize";
 
 class App extends Component {
   render() {
@@ -28,6 +30,7 @@ class App extends Component {
                     <Route path="/category"  component={CategoryForm}/>
                     {/*<Route path="/purchase" component={PurchaseForm}/>*/}
                     <Route path="/sale" component={SaleForm}/>
+                    <Route path="/login" component={LoginHome}/>
                   </Switch>
              </div>
        </BrowserRouter>
