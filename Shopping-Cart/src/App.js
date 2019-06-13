@@ -10,6 +10,7 @@ import ProductForm from "./components/ProductForm";
 import CategoryForm from "./components/CategoryForm";
 import SaleForm from "./components/SaleForm";
 import LoginHome from "./components/LoginHome";
+import LoginSuccesfullPage from "./components/LoginSuccesfullPage";
 // import LoginMaterialize from "./components/LoginMaterialize";
 
 class App extends Component {
@@ -31,6 +32,8 @@ class App extends Component {
                     {/*<Route path="/purchase" component={PurchaseForm}/>*/}
                     <Route path="/sale" component={SaleForm}/>
                     <Route path="/login" component={LoginHome}/>
+                    <Route path="/login_successful" component={LoginSuccesfullPage}/>
+
                   </Switch>
              </div>
        </BrowserRouter>
